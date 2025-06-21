@@ -4,15 +4,33 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.mariacarvalho.mybooks.ui.theme.MyBooksTheme
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.compose.material.icons.filled.MenuBook
+
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,12 +38,51 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyBooksTheme {
-                Surface (color = MaterialTheme.colorScheme.background) {
-                    BookList()
+                val navController = rememberNavController()
+
+                NavHost(navController = navController, startDestination = "welcome") {
+                    composable("welcome") {
+                        WelcomeScreen(onStartClick = {
+                            navController.navigate("books")
+                        })
+                    }
+                    composable("books") {
+                        BookListScreen()
+                    }
                 }
+
             }
         }
     }
+}
+
+@Composable
+fun WelcomeScreen(onStartClick: () -> Unit) {
+    Column (
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(32.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text("Bem-vindo ao MyBooks!", style = MaterialTheme.typography.headlineMedium)
+        Spacer(modifier = Modifier.height(24.dp))
+        Icon(
+            imageVector = Icons.Default.MenuBook,
+            contentDescription = "Ícone de livros",
+            tint = Color(0xFF6200EE),
+            modifier = Modifier.size(96.dp)
+        )
+        Spacer(modifier = Modifier.height(24.dp))
+        Button (onClick = onStartClick) {
+            Text("Entrar")
+        }
+    }
+}
+
+@Composable
+fun BookListScreen(viewModel: BookViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
+    BookList(viewModel)
 }
 
 @Composable

@@ -37,6 +37,7 @@ android {
     buildFeatures {
         compose = true
     }
+
 }
 
 dependencies {
@@ -52,6 +53,9 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1") //Criação do ViewModel
     implementation("androidx.compose.material3:material3:1.2.0-alpha01")
+
+    implementation("androidx.navigation:navigation-compose:2.7.6") //navegação
+    implementation("androidx.compose.material:material-icons-extended:1.6.7") //Icon Livro
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

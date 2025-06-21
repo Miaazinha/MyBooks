@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.material3)
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1") //Criação do ViewModel
+    implementation("androidx.compose.material3:material3:1.2.0-alpha01")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

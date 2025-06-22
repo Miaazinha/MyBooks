@@ -30,7 +30,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.mariacarvalho.mybooks.data.BookDatabase
+import com.mariacarvalho.mybooks.data.BookRepository
 
 
 class MainActivity : ComponentActivity() {
@@ -48,7 +53,12 @@ class MainActivity : ComponentActivity() {
                         })
                     }
                     composable("books") {
-                        BookListScreen(navController = navController)
+                        val context = LocalContext.current
+                        val db = remember { BookDatabase.getDatabase(context) }
+                        val repository = remember { BookRepository(db.bookDao()) }
+                        val viewModel: BookViewModel = viewModel(factory = BookViewModelFactory(repository))
+
+                        BookListScreen(viewModel = viewModel, navController = navController)
                     }
                 }
 

@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-@Entity(tableName = "Books")
+@Entity(tableName = "books")
 data class BookEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0, //Cria um id automático
     val title: String,

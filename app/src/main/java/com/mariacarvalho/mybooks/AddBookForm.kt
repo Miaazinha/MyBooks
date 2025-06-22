@@ -36,6 +36,6 @@ fun AddBookForm(viewModel: BookViewModel){
         modifier = Modifier.fillMaxWidth(),
         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4DB6AC))
     ) {
-        Text("Adicionar Livro")
+        Text("Adicionar Livro", color = Color.White)
     }
 }

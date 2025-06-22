@@ -16,6 +16,6 @@ interface BookDao {
     suspend fun deleteBook(book: BookEntity)
 
     @Update
-    suspend fun updatetBook(book: BookEntity)
+    suspend fun updateBook(book: BookEntity)
 
 }

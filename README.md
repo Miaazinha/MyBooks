@@ -25,6 +25,6 @@ A app MyBooks é uma aplicação móvel desenvolvida em Kotlin para Android, que
 
 1. Clone o repositório:
 
-   ´´bash
-   git clone https://github.com/Miaazinha/MyBooks.git
-   cd MyBooks
+   bash
+   - git clone https://github.com/Miaazinha/MyBooks.git
+   - cd MyBooks

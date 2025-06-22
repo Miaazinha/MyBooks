@@ -6,6 +6,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun AddBookForm(viewModel: BookViewModel){
@@ -32,7 +33,8 @@ fun AddBookForm(viewModel: BookViewModel){
                 author = ""
             }
         },
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
+        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4DB6AC))
     ) {
         Text("Adicionar Livro")
     }

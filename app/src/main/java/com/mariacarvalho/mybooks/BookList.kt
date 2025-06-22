@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
@@ -20,12 +21,12 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.CardDefaults
-
+import androidx.navigation.NavController
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BookList(viewModel: BookViewModel = viewModel()) {
+fun BookList(viewModel: BookViewModel = viewModel(), navController: NavController) {
     val books = viewModel.books
 
     Scaffold(
@@ -39,8 +40,17 @@ fun BookList(viewModel: BookViewModel = viewModel()) {
                         style = MaterialTheme.typography.titleLarge
                     )
                 },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "Voltar",
+                            tint = Color.White
+                        )
+                    }
+                },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    containerColor = Color(0xFF6200EE)
+                    containerColor = Color(0xFF80CBC4)
                 )
             )
         },
@@ -67,7 +77,7 @@ fun BookList(viewModel: BookViewModel = viewModel()) {
                 Text(
                     text = "Lista de Livros",
                     style = MaterialTheme.typography.headlineSmall,
-                    color = Color(0xFF4A148C)
+                    color = Color(0xFF00796B)
                 )
                 Spacer(modifier = Modifier.height(12.dp))
 
@@ -77,7 +87,7 @@ fun BookList(viewModel: BookViewModel = viewModel()) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(vertical = 6.dp),
-                            colors = CardDefaults.cardColors(containerColor = Color(0xFFEDE7F6)),
+                            colors = CardDefaults.cardColors(containerColor = Color(0xFFE0F2F1)),
                             elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
                         ) {
                             Row(
@@ -88,9 +98,9 @@ fun BookList(viewModel: BookViewModel = viewModel()) {
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Column {
-                                    Text(book.title, style = MaterialTheme.typography.titleMedium, color = Color(0xFF512DA8))
-                                    Text(book.author, style = MaterialTheme.typography.bodyMedium, color = Color(0xFF7E57C2))
-                                    Text(if (book.isRead) "Lido" else "Por Ler", color = Color(0xFF311B92))
+                                    Text(book.title, style = MaterialTheme.typography.titleMedium, color = Color(0xFF00796B))
+                                    Text(book.author, style = MaterialTheme.typography.bodyMedium, color = Color(0xFF009688))
+                                    Text(if (book.isRead) "Lido" else "Por Ler", color = Color(0xFF004D40))
                                 }
                                 Row {
                                     IconButton(onClick = { viewModel.readStatus(book) }) {

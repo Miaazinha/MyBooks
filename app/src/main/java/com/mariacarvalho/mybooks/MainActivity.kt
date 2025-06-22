@@ -29,7 +29,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.material.icons.filled.MenuBook
-
+import androidx.compose.material3.ButtonDefaults
+import androidx.navigation.NavController
 
 
 class MainActivity : ComponentActivity() {
@@ -47,7 +48,7 @@ class MainActivity : ComponentActivity() {
                         })
                     }
                     composable("books") {
-                        BookListScreen()
+                        BookListScreen(navController = navController)
                     }
                 }
 
@@ -70,19 +71,21 @@ fun WelcomeScreen(onStartClick: () -> Unit) {
         Icon(
             imageVector = Icons.Default.MenuBook,
             contentDescription = "Ícone de livros",
-            tint = Color(0xFF6200EE),
+            tint = Color(0xFF26A69A),
             modifier = Modifier.size(96.dp)
         )
         Spacer(modifier = Modifier.height(24.dp))
-        Button (onClick = onStartClick) {
+        Button (onClick = onStartClick,
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF26A69A))
+        ) {
             Text("Entrar")
         }
     }
 }
 
 @Composable
-fun BookListScreen(viewModel: BookViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
-    BookList(viewModel)
+fun BookListScreen(viewModel: BookViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), navController: NavController) {
+    BookList(viewModel, navController)
 }
 
 @Composable

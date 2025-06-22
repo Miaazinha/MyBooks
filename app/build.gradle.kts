@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+
+    kotlin("kapt")
 }
 
 android {
@@ -56,6 +58,10 @@ dependencies {
 
     implementation("androidx.navigation:navigation-compose:2.7.6") //navegação
     implementation("androidx.compose.material:material-icons-extended:1.6.7") //Icon Livro
+
+    implementation("androidx.room:room-runtime:2.5.2")
+    implementation("androidx.room:room-ktx:2.5.2")
+    kapt("androidx.room:room-compiler:2.5.2")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

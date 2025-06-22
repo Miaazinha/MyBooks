@@ -18,9 +18,9 @@ class BookViewModel(private val repository: BookRepository) : ViewModel() {
         loadBooks()
     }
 
-    fun addBook(title: String, author: String) {
+    fun addBook(title: String, author: String, opinion: String) {
         viewModelScope.launch {
-            val book = BookEntity(title = title, author = author)
+            val book = BookEntity(title = title, author = author, opinion = opinion)
             repository.insertBook(book)
             loadBooks()
         }
@@ -47,4 +47,6 @@ class BookViewModel(private val repository: BookRepository) : ViewModel() {
             loadBooks()
         }
     }
+
+
 }

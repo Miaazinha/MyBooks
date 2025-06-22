@@ -1,6 +1,7 @@
 package com.mariacarvalho.mybooks
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -30,12 +32,21 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.input.pointer.PointerId
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
+import androidx.room.util.TableInfo
 import com.mariacarvalho.mybooks.data.BookDatabase
 import com.mariacarvalho.mybooks.data.BookRepository
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import com.mariacarvalho.mybooks.data.BookEntity
 
 
 class MainActivity : ComponentActivity() {
@@ -60,6 +71,7 @@ class MainActivity : ComponentActivity() {
 
                         BookListScreen(viewModel = viewModel, navController = navController)
                     }
+
                 }
 
             }
@@ -94,9 +106,10 @@ fun WelcomeScreen(onStartClick: () -> Unit) {
 }
 
 @Composable
-fun BookListScreen(viewModel: BookViewModel = androidx.lifecycle.viewmodel.compose.viewModel(), navController: NavController) {
+fun BookListScreen(viewModel: BookViewModel = viewModel(), navController: NavController) {
     BookList(viewModel, navController)
 }
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {

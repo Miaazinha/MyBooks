@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 fun AddBookForm(viewModel: BookViewModel){
     var title by remember { mutableStateOf("") }
     var author by remember { mutableStateOf("") }
+    var opinion by remember { mutableStateOf("") }
 
     OutlinedTextField(
         value = title,
@@ -25,12 +26,23 @@ fun AddBookForm(viewModel: BookViewModel){
         label = { Text("Autor") },
         modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
     )
+    OutlinedTextField(
+        value = opinion,
+        onValueChange = { opinion = it },
+        label = { Text("Opinião") },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 8.dp)
+    )
+
+
     Button (
         onClick = {
             if (title.isNotBlank() && author.isNotBlank()) {
-                viewModel.addBook(title, author)
+                viewModel.addBook(title, author, opinion)
                 title = ""
                 author = ""
+                opinion = ""
             }
         },
         modifier = Modifier.fillMaxWidth(),

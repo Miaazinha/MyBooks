@@ -6,6 +6,8 @@ plugins {
     //Guardar os livros
     kotlin("kapt")
     id("kotlin-kapt")
+
+    id ("kotlin-parcelize")
 }
 
 android {

@@ -1,5 +1,7 @@
 package com.mariacarvalho.mybooks
 
+import android.os.Bundle
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -19,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.runtime.Composable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -104,6 +107,10 @@ fun BookList(viewModel: BookViewModel = viewModel(), navController: NavControlle
                                     Text(book.title, style = MaterialTheme.typography.titleMedium, color = Color(0xFF00796B))
                                     Text(book.author, style = MaterialTheme.typography.bodyMedium, color = Color(0xFF009688))
                                     Text(if (book.isRead) "Lido" else "Por Ler", color = Color(0xFF004D40))
+                                    if (book.opinion.isNotBlank()) {
+                                        Spacer(modifier = Modifier.height(4.dp))
+                                        Text("Opinião: ${book.opinion}", style = MaterialTheme.typography.bodySmall, color = Color.DarkGray)
+                                    }
                                 }
                                 Row {
                                     IconButton(onClick = { viewModel.readStatus(book) }) {

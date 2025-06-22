@@ -1,5 +1,8 @@
 pluginManagement {
     repositories {
+        plugins {
+            id("org.jetbrains.compose") version "1.9.0"
+        }
         google {
             content {
                 includeGroupByRegex("com\\.android.*")

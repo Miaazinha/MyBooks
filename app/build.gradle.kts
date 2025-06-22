@@ -1,14 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
-
-    //Guardar os livros
-    kotlin("kapt")
-    id("kotlin-kapt")
-
-    id ("kotlin-parcelize")
+    id("org.jetbrains.kotlin.kapt")
+    id("kotlin-parcelize")
 }
+
 
 android {
     namespace = "com.mariacarvalho.mybooks"

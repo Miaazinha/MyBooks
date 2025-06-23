@@ -53,19 +53,10 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1") //Criação do ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
     implementation("androidx.compose.material3:material3:1.2.0-alpha01")
-
-    implementation("androidx.navigation:navigation-compose:2.7.6") //navegação
-    implementation("androidx.compose.material:material-icons-extended:1.6.7") //Icon Livro
-
-    //Guardar os livros depois de app ter fechado
-    implementation("androidx.room:room-runtime:2.6.1")
-    kapt("androidx.room:room-compiler:2.6.1")
-    implementation("androidx.room:room-ktx:2.5.2")
-
+    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation("androidx.compose.material:material-icons-extended:1.6.7")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -73,7 +64,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    
 
-
+    //Guardar os livros depois de app ter fechado
+    implementation("androidx.room:room-runtime:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-ktx:2.5.2")
 }

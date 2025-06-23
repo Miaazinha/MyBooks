@@ -3,8 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
 
     //Guardar os livros
-    kotlin("kapt")
-    id("kotlin-kapt")
+    kotlin("kapt") version "2.0.21"
 }
 
 

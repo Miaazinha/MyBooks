@@ -1,18 +1,25 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+<<<<<<< HEAD
 
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.compose)
+=======
+    alias(libs.plugins.kotlin.compose)
+
+    //Guardar os livros
+    kotlin("kapt")
+    id("kotlin-kapt")
+>>>>>>> b86afba (Corrigido um erro no uso de kapt)
 }
 
-
 android {
-    namespace = "com.mariacarvalho.mybooks"
+    namespace = "com.MariaCarvalho.mybooks"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.mariacarvalho.mybooks"
+        applicationId = "com.MariaCarvalho.mybooks"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -40,7 +47,6 @@ android {
     buildFeatures {
         compose = true
     }
-
 }
 
 dependencies {
@@ -68,4 +74,8 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.5.2")
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b86afba (Corrigido um erro no uso de kapt)

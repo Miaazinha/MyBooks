@@ -1,17 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-<<<<<<< HEAD
-
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.compose)
-=======
-    alias(libs.plugins.kotlin.compose)
-
-    //Guardar os livros
-    kotlin("kapt")
-    id("kotlin-kapt")
->>>>>>> b86afba (Corrigido um erro no uso de kapt)
 }
 
 android {
@@ -47,10 +38,16 @@ android {
     buildFeatures {
         compose = true
     }
+    kapt {
+        correctErrorTypes = true
+    }
+}
+
+kapt {
+    correctErrorTypes = true
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -70,12 +67,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    //Guardar os livros depois de app ter fechado
+    // Room
     implementation("androidx.room:room-runtime:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.5.2")
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b86afba (Corrigido um erro no uso de kapt)

@@ -15,11 +15,11 @@ plugins {
 }
 
 android {
-    namespace = "com.MariaCarvalho.mybooks"
+    namespace = "com.mariaCarvalho.mybooks"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.MariaCarvalho.mybooks"
+        applicationId = "com.mariaCarvalho.mybooks"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

@@ -2,8 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 
-    //Guardar os livros
-    kotlin("kapt") version "2.0.21"
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlin.compose)
 }
 
 
